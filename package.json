@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "start": "next start",
     "build": "next build",
-    "export": "next export",
-    "lint": "next lint",
-    "deploy": "npm run build && npm run export"
+    "deploy": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "react": "^19.0.0",

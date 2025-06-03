@@ -3,30 +3,30 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Sempre que fizer push na main, roda esse workflow
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'   # Use a versão que preferir
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build and export static site
-      run: npm run deploy
+      - name: Build static site
+        run: npm run deploy
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out   # Pasta que contém o site estático exportado
-        publish_branch: gh-pages  # Branch para publicar no GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out      # Pasta gerada pelo `next build` com `output: 'export'`
+          publish_branch: gh-pages
