@@ -28,5 +28,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out      # Pasta gerada pelo `next build` com `output: 'export'`
+          publish_dir: ./out
           publish_branch: gh-pages
+          force_orphan: true
